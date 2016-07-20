@@ -1,0 +1,60 @@
+---
+.catalog:
+  name: "Registry"
+  version: "v2.0.0-1"
+  description: "Docker Registry stack"
+  uuid: registry-1
+  minimum_rancher_version: v0.44.0
+  questions:
+    - variable: "REGISTRY_SSL_KEY"
+      label: "Registry key"
+      description: "Registry SSL private key"
+      type: "multiline"
+      required: true
+    - variable: "REGISTRY_SSL_CRT"
+      label: "Registry certificate"
+      description: "Registry SSL certificate"
+      type: "multiline"
+      required: true
+    - variable: "AUTH_SSL_KEY"
+      label: "Registry auth key"
+      description: "Registry authentication SSL private key"
+      type: "multiline"
+      required: true
+    - variable: "AUTH_SSL_CRT"
+      label: "Registry auth certificate"
+      description: "Registry authentication SSL certificate"
+      type: "multiline"
+      required: true
+    - variable: "GITHUB_CLIENT_ID"
+      label: "GitHub Client ID"
+      description: "GitHub Application Client ID"
+      type: "string"
+      required: true
+    - variable: "GITHUB_SECRET"
+      label: "GitHub Secret"
+      description: "GitHub Application Secret"
+      type: "password"
+      required: true
+    - variable: "AUTH_REALM"
+      label: "Authentication Realm"
+      description: "Authentication Realm for the Registry"
+      type: "string"
+      default: "https://auth.registry.infra.caas-camptocamp.net:5001"
+      required: true
+
+registry:
+  health_check:
+    port: 5000
+    interval: 10000
+    unhealthy_threshold: 3
+    healthy_threshold: 2
+    response_timeout: 2000
+
+auth:
+  health_check:
+    port: 5001
+    interval: 10000
+    unhealthy_threshold: 3
+    healthy_threshold: 2
+    response_timeout: 2000

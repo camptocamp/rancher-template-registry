@@ -1,0 +1,46 @@
+---
+# Authentication service
+auth:
+  image: camptocamp/docker_auth:github
+  labels:
+    io.rancher.sidekicks: auth-conf
+  ports:
+  - 5001:5001/tcp
+  command:
+  - /auth/auth_config.yaml
+  volumes:
+  - registryconfdata:/data
+  volumes_from:
+  - auth-conf
+
+# Authentication configuration
+auth-conf:
+  image: camptocamp/docker_auth-conf
+  environment:
+    AUTH_SSL_CRT: ${AUTH_SSL_CRT}
+    AUTH_SSL_KEY: ${AUTH_SSL_KEY}
+    GITHUB_CLIENT_ID: 9ea1bd503893e0a99841
+    GITHUB_SECRET: fb29186cbcd60a3ad3f0f397c30182c48ff21f7a
+  labels:
+    io.rancher.container.start_once: 'true'
+
+# Registry service
+registry:
+  ports:
+  - 5000:5000/tcp
+  labels:
+    io.rancher.sidekicks: registry-conf
+  image: registry:2
+  volumes:
+  - dockerregistrydata:/var/lib/registry
+
+# Registry configuration
+registry-conf:
+  image: camptocamp/registry-conf:0.1.0
+  labels:
+    io.rancher.container.start_once: 'true'
+  environment:
+    AUTH_REALM: ${AUTH_REALM}
+    AUTH_SSL_CRT: ${AUTH_SSL_CRT}
+    REGISTRY_SSL_CRT: ${REGISTRY_SSL_CRT}
+    REGISTRY_SSL_KEY: ${REGISTRY_SSL_KEY}

@@ -1,7 +1,7 @@
 ---
 # Authentication service
 auth:
-  image: camptocamp/docker_auth:github
+  image: camptocamp/docker_auth:github-2
   labels:
     io.rancher.sidekicks: auth-conf
   ports:
@@ -15,7 +15,7 @@ auth:
 
 # Authentication configuration
 auth-conf:
-  image: camptocamp/docker_auth-conf
+  image: camptocamp/docker_auth-conf:0.2.0
   environment:
     AUTH_SSL_CRT: ${AUTH_SSL_CRT}
     AUTH_SSL_KEY: ${AUTH_SSL_KEY}

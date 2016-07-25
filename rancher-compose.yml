@@ -1,9 +1,9 @@
 ---
 .catalog:
   name: "Registry"
-  version: "v2.0.0-4"
+  version: "v2.0.0-5"
   description: "Docker Registry stack"
-  uuid: registry-4
+  uuid: registry-5
   minimum_rancher_version: v0.44.0
   questions:
     - variable: "REGISTRY_SSL_KEY"

@@ -1,7 +1,7 @@
 ---
 # Authentication service
 auth:
-  image: camptocamp/docker_auth:github-2
+  image: camptocamp/docker_auth:1.0-1
   labels:
     io.rancher.sidekicks: auth-conf
   ports:

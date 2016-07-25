@@ -1,9 +1,9 @@
 ---
 .catalog:
   name: "Registry"
-  version: "v2.0.0-5"
+  version: "v2.0.0-6"
   description: "Docker Registry stack"
-  uuid: registry-5
+  uuid: registry-6
   minimum_rancher_version: v0.44.0
   questions:
     - variable: "REGISTRY_SSL_KEY"
@@ -26,6 +26,37 @@
       description: "Registry authentication SSL certificate"
       type: "multiline"
       required: true
+    - variable: "SWIFT_USERNAME"
+      label: "Swift username"
+      description: "Registry storage Swift username"
+      type: "string"
+      required: false
+    - variable: "SWIFT_PASSWORD"
+      label: "Swift password"
+      description: "Registry storage Swift password"
+      type: "password"
+      required: false
+    - variable: "SWIFT_AUTH_URL"
+      label: "Swift auth URL"
+      description: "Registry storage Swift auth URL"
+      type: "string"
+      required: false
+      default: "https://auth.cloud.ovh.net/v2.0"
+    - variable: "SWIFT_TENANT_NAME"
+      label: "Swift tenant name"
+      description: "Registry storage Swift tenant name"
+      type: "string"
+      required: false
+    - variable: "SWIFT_CONTAINER"
+      label: "Swift container"
+      description: "Registry storage Swift container"
+      type: "string"
+      required: false
+    - variable: "SWIFT_REGION"
+      label: "Swift region"
+      description: "Registry storage Swift region"
+      type: "string"
+      required: false
     - variable: "GITHUB_ORGANIZATION"
       label: "GitHub Organization"
       description: "GitHub Organization"

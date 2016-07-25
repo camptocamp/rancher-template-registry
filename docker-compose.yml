@@ -32,8 +32,6 @@ registry:
   labels:
     io.rancher.sidekicks: registry-conf
   image: registry:2
-  volumes:
-  - dockerregistrydata:/var/lib/registry
   volumes_from:
   - registry-conf
 
@@ -47,3 +45,9 @@ registry-conf:
     AUTH_SSL_CRT: ${AUTH_SSL_CRT}
     REGISTRY_SSL_CRT: ${REGISTRY_SSL_CRT}
     REGISTRY_SSL_KEY: ${REGISTRY_SSL_KEY}
+    SWIFT_USERNAME: ${SWIFT_USERNAME}
+    SWIFT_PASSWORD: ${SWIFT_PASSWORD}
+    SWIFT_AUTH_URL: ${SWIFT_AUTH_URL}
+    SWIFT_TENANT_NAME: ${SWIFT_TENANT_NAME}
+    SWIFT_CONTAINER: ${SWIFT_CONTAINER}
+    SWIFT_REGION: ${SWIFT_REGION}

@@ -37,7 +37,7 @@ registry:
 
 # Registry configuration
 registry-conf:
-  image: camptocamp/registry-conf:0.1.0
+  image: camptocamp/registry-conf:0.2.0
   labels:
     io.rancher.container.start_once: 'true'
   environment:
